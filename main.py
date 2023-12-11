@@ -2,14 +2,12 @@ from flask import Flask, Blueprint, request, jsonify
 from gradio_client import Client
 
 app = Flask(__name__)
-main = Blueprint('main', __name__)
 
-
-@main.route('/')
+@app.route('/')
 def index():
     return 'Hello Odai, here you will be able to communicate with the API and the Flutter app'
 
-@main.route('/code_gen', methods=['POST'])
+@app.route('/code_gen', methods=['POST'])
 def process_text():
     try:
         # Check if the request has JSON data
@@ -38,8 +36,3 @@ def process_text():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
-if __name__ == '__main__':
-    app.register_blueprint(main)
-    app.run(host='0.0.0.0', port=8050)

@@ -1,7 +1,11 @@
 from flask import Flask, Blueprint, request, jsonify
 from gradio_client import Client
+from parse_url import get_api_url
 
 app = Flask(__name__)
+
+# URL of the page to scrape
+url = "https://deepseek-ai-deepseek-coder-7b-instruct.hf.space/?view=api"
 
 @app.route('/')
 def index():
@@ -20,7 +24,8 @@ def process_text():
             system_prompt = request.form.get('system')
 
         # Make the API request to the new API using gradio_client
-        client = Client("https://deepseek-ai-deepseek-coder-7b-instruct.hf.space/--replicas/2h9mr/")
+        api = get_api_url(url)
+        client = Client(api)
         result = client.predict(
             input_text,     # str in 'Message' Textbox component
             system_prompt,     # str in 'System prompt' Textbox component

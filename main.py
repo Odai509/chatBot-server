@@ -20,7 +20,7 @@ def process_text():
             system_prompt = request.form.get('system')
 
         # Make the API request to the new API using gradio_client
-        client = Client("https://deepseek-ai-deepseek-coder-7b-instruct.hf.space/--replicas/qjbc9/")
+        client = Client("https://deepseek-ai-deepseek-coder-7b-instruct.hf.space/--replicas/2h9mr/")
         result = client.predict(
             input_text,     # str in 'Message' Textbox component
             system_prompt,     # str in 'System prompt' Textbox component

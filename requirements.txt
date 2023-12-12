@@ -1,3 +1,6 @@
-flask
-gunicorn
+Flask
 gradio_client
+huggingface-hub
+requests
+gunicorn
+bs4

@@ -29,9 +29,9 @@ def process_text():
         result = client.predict(
             input_text,     # str in 'Message' Textbox component
             system_prompt,     # str in 'System prompt' Textbox component
-            300,              # int | float in 'Max new tokens' Slider component
+            70,              # int | float in 'Max new tokens' Slider component
             0.9,           # int | float in 'Top-p (nucleus sampling)' Slider component
-            50,              # int | float in 'Top-k' Slider component
+            20,              # int | float in 'Top-k' Slider component
             1,              # int | float in 'Repetition penalty' Slider component
             api_name="/chat"
         )

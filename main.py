@@ -4,7 +4,7 @@ from gradio_client import Client
 app = Flask(__name__)
 
 # URL of the page
-url = "https://odai-509-devbot.hf.space/--replicas/3xiwz/"
+url = "https://2e3bd2dbdc5f7c8e0c.gradio.live/"
 
 @app.route('/')
 def index():

@@ -4,7 +4,7 @@ from gradio_client import Client
 app = Flask(__name__)
 
 # URL of the page
-url = "https://cfdce13d75e27c4ee5.gradio.live/"
+url = "https://2e3bd2dbdc5f7c8e0c.gradio.live/"
 
 @app.route('/')
 def index():
@@ -16,11 +16,11 @@ def process_text():
         # Check if the request has JSON data
         if request.json:
             input_text = request.json.get('text')
-            system_prompt = request.json.get('system')
         else:
             # Fallback to form data if no JSON data is found
             input_text = request.form.get('text')
-            system_prompt = request.form.get('system')
+            
+        system_prompt = "You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer."
 
         # Make the API request to the new API using gradio_client
         client = Client(url)

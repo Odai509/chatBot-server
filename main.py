@@ -1,11 +1,10 @@
 from flask import Flask, Blueprint, request, jsonify
 from gradio_client import Client
-from parse_url import get_api_url
 
 app = Flask(__name__)
 
-# URL of the page to scrape
-url = "https://deepseek-ai-deepseek-coder-7b-instruct.hf.space/?view=api"
+# URL of the page
+url = "https://cfdce13d75e27c4ee5.gradio.live/"
 
 @app.route('/')
 def index():
@@ -24,16 +23,15 @@ def process_text():
             system_prompt = request.form.get('system')
 
         # Make the API request to the new API using gradio_client
-        api = get_api_url(url)
-        client = Client(api)
+        client = Client(url)
         result = client.predict(
-            input_text,     # str in 'Message' Textbox component
             system_prompt,     # str in 'System prompt' Textbox component
-            70,              # int | float in 'Max new tokens' Slider component
-            0.9,           # int | float in 'Top-p (nucleus sampling)' Slider component
-            20,              # int | float in 'Top-k' Slider component
-            1,              # int | float in 'Repetition penalty' Slider component
-            api_name="/chat"
+    		input_text,	# str  in 'User Prompt' Textbox component
+    		0.6,	# float (numeric value between 0.0 and 1.0) in 'Temperature' Slider component
+    		500,	# float (numeric value between 10 and 1548) in 'Maximum output lenght' Slider component
+    		0.9,	# float (numeric value between 0.0 and 1.0) in 'Top_P' Slider component
+    		1,	# float (numeric value between 0.0 and 4.0) in 'Repetition Penalty' Slider component
+            api_name="/combine"
         )
 
         # Assuming the result is a string response
